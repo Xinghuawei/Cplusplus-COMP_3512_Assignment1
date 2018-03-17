@@ -61,16 +61,15 @@ int main() {
 			}
 		}
 	}
-
-	for (int i = 1; i <= count; i++) {
-		cout << arr[i] << " ";
-	}
-	cout << endl;
-	
-
-
 	cout << matS << endl;
 
+	Matrix matQ(count);
+	for (int i = 1; i <= count; i++) {
+		for (int k = 1; k <= count; k++) {
+			matQ.set_value(i, k, 1 / (double)count);
+		}
+	}
+	cout << matQ << endl;
 
 
 	system("PAUSE");
