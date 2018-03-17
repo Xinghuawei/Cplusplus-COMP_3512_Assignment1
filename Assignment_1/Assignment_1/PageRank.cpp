@@ -13,7 +13,7 @@ Matrix::Matrix() {
 //constructor that accepts integer which n is the size of the martix
 Matrix::Matrix(int n) : size{ n } {
 	matrix = new double[size*size];
-	for (int i = 0; i < size; i++) {
+	for (int i = 0; i < size*size; i++) {
 		matrix[i] = 0;
 	}
 }
