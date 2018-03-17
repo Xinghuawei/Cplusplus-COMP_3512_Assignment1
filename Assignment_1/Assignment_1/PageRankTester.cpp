@@ -23,14 +23,14 @@ int main() {
 	int row = 1;
 	int col = 1;
 	while ((c = file2.get()) != EOF) {
-		if ((c - '0') >= 0) {
+		if (!isspace(c)) {
 			matG.set_value(row, col, (c - '0'));
-			if (((col + 1) % (count + 1)) == 0) {
-				col = 1;
-				row++;
+			if ((col % count) != 0) {
+				col++;
 			}
 			else {
-				col++;
+				col = 1;
+				row++;
 			}
 		}
 	}
