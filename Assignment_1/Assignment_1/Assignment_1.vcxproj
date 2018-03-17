@@ -117,6 +117,10 @@
   <ItemGroup>
     <ClInclude Include="PageRank.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PageRank.cpp" />
+    <ClCompile Include="PageRankTester.cpp" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
