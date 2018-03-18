@@ -41,10 +41,10 @@ int main() {
 
 	cout << matG << endl;
 
-	cout << "--------------------------" << endl;
-	cout << "Initial Importance matrix S: " << endl;
+
+	//Initial Importance matrix S
 	Matrix matS(count);
-	cout << matS << endl;
+
 	int count1=0;
 
 	double *arr = new double[count];
@@ -171,10 +171,12 @@ int main() {
 	cout << "--------------------------" << endl;
 	cout << "Final Rank : " << endl;
 	for (int i = 0; i < count; i++) {
-		cout<<final[i]<<endl;
+		char c = i + 65;
+		cout << c << " = " << final[i] << endl;
 	}
 
 	ofstream outfile("rank.txt");
+	
 	for (int i = 0; i < count; i++) {
 		char c = i + 65;
 		outfile << c << " = " << final[i] << endl;
