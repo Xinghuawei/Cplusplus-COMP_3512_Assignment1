@@ -61,6 +61,7 @@ int main() {
 	int count1=0;
 
 	//count number of 1's in one column
+	//Count value is row number(column number)
 	double *arr = new double[count];
 	for (int i = 1; i <= count; i++) {
 		count1 = 0;
@@ -72,7 +73,9 @@ int main() {
 		arr[i] =count1;
 	}
 
-
+	//set values into matrix S
+	//If one column does not has any 1, the 
+	//value is 1/row(col).
 	for (int i = 1; i <= count; i++) {
 		for (int k = 1; k <= count; k++) {
 			if (matG.get_value(k, i) == 1) {
@@ -84,28 +87,42 @@ int main() {
 		}
 	}
 
+	//print matrix S
 	cout << "--------------------------" << endl;
 	cout << "Importance matrix S: " << endl;
 	cout << matS << endl;
 
+	//Create matrix Q.
+	//Every value in Q is 1/size.
 	Matrix matQ(count);
 	for (int i = 1; i <= count; i++) {
 		for (int k = 1; k <= count; k++) {
 			matQ.set_value(i, k, 1 / (double)count);
 		}
 	}
+
+	//Print matrix Q.
 	cout << "--------------------------" << endl;
 	cout << "Matrix Q: " << endl;
 	cout << matQ << endl;
+
+	//Transitive matrix = 0.15*Matrix Q + Matrix S*0.85
+	//Calculate matrix Q * 0.15 and set value into Q.
+	//Print Q
 	cout << "--------------------------" << endl;
 	cout << "Matrix Q * 0.15: " << endl;
 	matQ *= 0.15;
 	cout << matQ << endl;
+
+	//Calculate matrix S * 0.85 and set value into S.
+	//Print S.
 	cout << "--------------------------" << endl;
 	cout << "Matrix S * 0.85: " << endl;
 	matS *= 0.85;
 	cout << matS << endl;
 
+	//Transitive matrix = 0.15*Matrix Q + Matrix S*0.85
+	//Print transitive matrix.
 	cout << "--------------------------" << endl;
 	cout << "transition matrix M: " << endl;
 	Matrix matTransition = matQ + matS;
