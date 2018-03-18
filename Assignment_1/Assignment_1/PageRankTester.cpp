@@ -9,7 +9,7 @@
 using namespace std;
 int main() {
 	int count{ 0 };
-	fstream file("test.txt");
+	fstream file("test2.txt");
 	string line;
 	while (file.get() != EOF) {
 		getline(file, line);
@@ -19,7 +19,7 @@ int main() {
 	cout << count << endl;
 
 	fstream file2;
-	file2.open("test.txt");
+	file2.open("test2.txt");
 	Matrix matG(count);
 	int c;
 	int row = 1;
@@ -56,17 +56,19 @@ int main() {
 			}
 		}
 		arr[i] =count1;
-		for (int i = 1; i <= count; i++) {
-			for (int k = 1; k <= count; k++) {
-				if (matG.get_value(k, i) == 1) {
-					matS.set_value(k, i, 1 / arr[i]);
-				}
-				if (arr[i] == 0) {
-					matS.set_value(k, i, 1 / (double)count);
-				}
+	}
+
+	for (int i = 1; i <= count; i++) {
+		for (int k = 1; k <= count; k++) {
+			if (matG.get_value(k, i) == 1) {
+				matS.set_value(k, i, 1 / arr[i]);
+			}
+			if (arr[i] == 0) {
+				matS.set_value(k, i, 1 / (double)count);
 			}
 		}
 	}
+
 	cout << "--------------------------" << endl;
 	cout << "Importance matrix S: " << endl;
 	cout << matS << endl;
@@ -113,9 +115,6 @@ int main() {
 				sum += (Rank[k - 1] * matTransition.get_value(i, k));
 			}
 			RankCopy[i - 1] = sum;
-			for (int j = 0; j < count; j++) {
-				//cout << RankCopy[j] << endl;
-			}
 		}
 
 		if (RankCopy != Rank) {
@@ -134,9 +133,6 @@ int main() {
 				sum += (RankCopy[k - 1] * matTransition.get_value(i, k));
 			}
 			Rank[i - 1] = sum;
-			for (int j = 0; j < count; j++) {
-				//cout << Rank[j] << endl;
-			}
 		}
 
 		if (RankCopy != Rank) {
@@ -150,17 +146,41 @@ int main() {
 	}
 
 	cout << "--------------------------" << endl;
+	vector<double> final(count);
 	if (whichone) {
+		double sum = 0.0;
 		for (int i = 0; i < count; i++) {
 			cout << RankCopy[i] << endl;
+			sum += RankCopy[i];
 		}
+		for (int j = 0; j < count; j++) {
+			final[j] = RankCopy[j] / sum;
+		}
+
 	} else {
+		double sum = 0.0;
 		for (int i = 0; i < count; i++) {
 			cout << Rank[i] << endl;
+			sum += Rank[i];
+		}
+		for (int j = 0; j < count; j++) {
+			final[j] = Rank[j] / sum;
 		}
 	}
 
+	cout << "--------------------------" << endl;
+	cout << "Final Rank : " << endl;
+	for (int i = 0; i < count; i++) {
+		cout<<final[i]<<endl;
+	}
+
+	ofstream outfile("rank.txt");
+	for (int i = 0; i < count; i++) {
+		char c = i + 65;
+		outfile << c << " = " << final[i] << endl;
+	}
+	outfile.close();
 	system("PAUSE");
-	
+	return 0;
 	
 }
