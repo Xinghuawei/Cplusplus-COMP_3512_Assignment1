@@ -10,7 +10,7 @@ int main() {
 	int count{ 0 };
 	string in;
 	
-	cout << "Enter the file name: (test.txt or text2.txt)" << endl;
+	cout << "Enter the file name: (test.txt or test2.txt)" << endl;
 	cin >> in;
 
 	//open file with input name
@@ -128,8 +128,14 @@ int main() {
 	Matrix matTransition = matQ + matS;
 	cout << matTransition << endl;
 
+	//Create vector represents rank with value of all 1's 
 	vector<double> Rank(count,1.0);
+
+	//Create vector represents a temp with size of size.
+	//count is size.
 	vector<double> RankCopy(count);
+
+	//Print rank.
 	cout << "--------------------------" << endl;
 	cout << "Initial Matrix Rank: " << endl;
 	for (int i = 0; i < count; i++) {
@@ -137,8 +143,17 @@ int main() {
 	}
 	cout << "--------------------------" << endl;
 	
+	//True then while loop continues.
 	bool chain = true;
+
+	//decide which for loop the loop terminate.
+	//True then use RankCopy
+	//False then use Rank
 	bool whichone;
+
+	//Multiply the transition matrix M by our column matrix rank, and then
+	//multiply M by the result and then keep doing this until the and rank stops
+	//changing
 	while (chain==true) {
 		
 		for (int i = 1; i <= count; i++) {
@@ -178,7 +193,13 @@ int main() {
 	}
 
 	cout << "--------------------------" << endl;
+
+	//Create a final vector to represents rank result.
 	vector<double> final(count);
+
+	//decide which for loop the loop terminate.
+	//True then use RankCopy
+	//False then use Rank
 	if (whichone) {
 		double sum = 0.0;
 		for (int i = 0; i < count; i++) {
@@ -202,18 +223,29 @@ int main() {
 
 	cout << "--------------------------" << endl;
 	cout << "Final Rank : " << endl;
+
+	//Print final rank.
+	//i+65 is letter A and so on.
 	for (int i = 0; i < count; i++) {
 		char c = i + 65;
 		cout << c << " = " << final[i] << endl;
 	}
 
-	ofstream outfile("rank.txt");
+	//Output result to a txt file.
+	ofstream outfile("PageRank.txt");
 	
+	//Print result.
+	//i+65 is letter A and so on.
 	for (int i = 0; i < count; i++) {
 		char c = i + 65;
 		outfile << c << " = " << final[i] << endl;
 	}
+
+	//close file.
+	file.close();
+	file2.close();
 	outfile.close();
+
 	system("PAUSE");
 	return 0;
 	
