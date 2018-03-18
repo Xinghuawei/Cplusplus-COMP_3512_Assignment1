@@ -15,7 +15,7 @@ int main() {
 		getline(file, line);
 		count++;
 	}
-	cout << "size: " << endl;
+	cout << "size is : ";
 	cout << count << endl;
 
 	fstream file2;
@@ -36,9 +36,13 @@ int main() {
 			}
 		}
 	}
-	
+	cout << "--------------------------" << endl;
+	cout << "connectivity matrix G: " << endl;
+
 	cout << matG << endl;
-	
+
+	cout << "--------------------------" << endl;
+	cout << "Initial Importance matrix S: " << endl;
 	Matrix matS(count);
 	cout << matS << endl;
 	int count1=0;
@@ -63,6 +67,8 @@ int main() {
 			}
 		}
 	}
+	cout << "--------------------------" << endl;
+	cout << "Importance matrix S: " << endl;
 	cout << matS << endl;
 
 	Matrix matQ(count);
@@ -71,17 +77,27 @@ int main() {
 			matQ.set_value(i, k, 1 / (double)count);
 		}
 	}
+	cout << "--------------------------" << endl;
+	cout << "Matrix Q: " << endl;
+	cout << matQ << endl;
+	cout << "--------------------------" << endl;
+	cout << "Matrix Q * 0.15: " << endl;
 	matQ *= 0.15;
 	cout << matQ << endl;
-
+	cout << "--------------------------" << endl;
+	cout << "Matrix S * 0.85: " << endl;
 	matS *= 0.85;
 	cout << matS << endl;
 
+	cout << "--------------------------" << endl;
+	cout << "transition matrix M: " << endl;
 	Matrix matTransition = matQ + matS;
 	cout << matTransition << endl;
 
 	vector<double> Rank(count,1);
 
+	cout << "--------------------------" << endl;
+	cout << "Initial Matrix Rank: " << endl;
 	for (int i = 0; i < Rank.size(); i++) {
 		cout<< Rank[i]<<endl;
 	}
