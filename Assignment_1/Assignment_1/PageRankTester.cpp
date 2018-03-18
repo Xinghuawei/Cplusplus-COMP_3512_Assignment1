@@ -1,4 +1,3 @@
-
 #include "PageRank.h"
 #include <iostream>
 #include <fstream>
@@ -9,8 +8,17 @@
 using namespace std;
 int main() {
 	int count{ 0 };
-	fstream file("test2.txt");
+	string in;
+	
+	cout << "Enter the file name: (test.txt or text2.txt)" << endl;
+	cin >> in;
+
+	//open file with input name
+	fstream file(in);
 	string line;
+
+	//Count the number of lines in the file
+	//Number of lines equals rows also equals columns
 	while (file.get() != EOF) {
 		getline(file, line);
 		count++;
@@ -18,12 +26,16 @@ int main() {
 	cout << "size is : ";
 	cout << count << endl;
 
+	//reset file pointing locationn
 	fstream file2;
-	file2.open("test2.txt");
+	file2.open(in);
 	Matrix matG(count);
 	int c;
 	int row = 1;
 	int col = 1;
+
+	//get values from the file and insert into
+	//matrix one by one.
 	while ((c = file2.get()) != EOF) {
 		if (!isspace(c)) {
 			matG.set_value(row, col, (c - '0'));
@@ -39,6 +51,7 @@ int main() {
 	cout << "--------------------------" << endl;
 	cout << "connectivity matrix G: " << endl;
 
+	//output matrix G
 	cout << matG << endl;
 
 
@@ -47,6 +60,7 @@ int main() {
 
 	int count1=0;
 
+	//count number of 1's in one column
 	double *arr = new double[count];
 	for (int i = 1; i <= count; i++) {
 		count1 = 0;
@@ -57,6 +71,7 @@ int main() {
 		}
 		arr[i] =count1;
 	}
+
 
 	for (int i = 1; i <= count; i++) {
 		for (int k = 1; k <= count; k++) {

@@ -96,7 +96,9 @@ void swap(Matrix& first, Matrix& second) {
 	swap(first.matrix, second.matrix);
 }
 
-
+//matrix multiplication with another matrix.
+//precondition: none.
+//postcondition: result of the multiplication.
 Matrix& Matrix:: operator*=(const Matrix & rhs)
 {
 	int total{ 0 };
@@ -117,6 +119,9 @@ Matrix& Matrix:: operator*=(const Matrix & rhs)
 	return *this;
 }
 
+//matrix multiplication with double value.
+//precondition: none.
+//postcondition: result of the multiplication.
 Matrix& Matrix::operator*=(double n) {
 	Matrix tmp(*this);
 	for (int i = 1; i <= size; i++) {
@@ -128,8 +133,7 @@ Matrix& Matrix::operator*=(double n) {
 	return *this;
 }
 
-
-
+//overload operator +
 Matrix Matrix::operator+(const Matrix& m) {
 	if (m.size == size) {
 		Matrix temp(size);

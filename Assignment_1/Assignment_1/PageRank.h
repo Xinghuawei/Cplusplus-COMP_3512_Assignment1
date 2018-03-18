@@ -1,5 +1,4 @@
-#ifndef M_H
-#define M_H
+#pragma onece
 
 #include<iostream>
 #include<stdexcept>
@@ -54,15 +53,18 @@ public:
 	//copy & swap
 	friend void swap(Matrix&, Matrix&);
 
+	//matrix multiplication with another matrix.
 	Matrix& operator*=(const Matrix & rhs);
 
+	//matrix multiplication with another double value.
 	Matrix& operator*=(double);
 
+	//overload operator +
 	Matrix operator+(const Matrix&);
 };
 
 
-#endif
+
 
 
 
