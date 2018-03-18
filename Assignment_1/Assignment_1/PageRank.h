@@ -21,7 +21,7 @@ public:
 	//default constructor
 	Matrix();
 
-	Matrix(int, int);
+
 	//constructor that accepts integer which is the size of the martix
 	Matrix(int);
 

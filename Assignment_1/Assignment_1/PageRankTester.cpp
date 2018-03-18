@@ -94,33 +94,72 @@ int main() {
 	Matrix matTransition = matQ + matS;
 	cout << matTransition << endl;
 
-	vector<double> Rank(count,1);
+	vector<double> Rank(count,1.0);
 	vector<double> RankCopy(count);
-
 	cout << "--------------------------" << endl;
 	cout << "Initial Matrix Rank: " << endl;
 	for (int i = 0; i < count; i++) {
 		cout<< Rank[i]<<endl;
 	}
-
-
-	for (int i = 1; i <= count; i++) {
-		double sum = 0.0;
-		for (int k = 1; k <= count; k++) {
-			sum += (Rank[k-1] * matTransition.get_value(i, k));
-		}
-		RankCopy[i-1] = sum;
-	}
+	cout << "--------------------------" << endl;
 	
-	for (int i = 0; i < count; i++) {
-		cout << RankCopy[i] << endl;
+	bool chain = true;
+	bool whichone;
+	while (chain==true) {
+		
+		for (int i = 1; i <= count; i++) {
+			double sum = 0.0;
+			for (int k = 1; k <= count; k++) {
+				sum += (Rank[k - 1] * matTransition.get_value(i, k));
+			}
+			RankCopy[i - 1] = sum;
+			for (int j = 0; j < count; j++) {
+				cout << RankCopy[j] << endl;
+			}
+		}
+		if (RankCopy != Rank) {
+			Rank.erase(Rank.begin(), Rank.begin() + count);
+			Rank.resize(count);
+		}
+		else {
+			chain = false;
+			whichone = true;
+			cout << "1" << endl;
+		}
+		
+
+		for (int i = 1; i <= count; i++) {
+			double sum = 0.0;
+			for (int k = 1; k <= count; k++) {
+				sum += (RankCopy[k - 1] * matTransition.get_value(i, k));
+			}
+			Rank[i - 1] = sum;
+			for (int j = 0; j < count; j++) {
+				cout << Rank[j] << endl;
+			}
+		}
+
+		if (RankCopy != Rank) {
+			RankCopy.erase(RankCopy.begin(), RankCopy.begin()+count);
+			RankCopy.resize(count);
+		}
+		else {
+			chain = false;
+			whichone = false;
+			cout << "2" << endl;
+		}
 	}
 
-
-
-
-
-
+	cout << "--------------------------" << endl;
+	if (whichone) {
+		for (int i = 0; i < count; i++) {
+			cout << RankCopy[i] << endl;
+		}
+	} else {
+		for (int i = 0; i < count; i++) {
+			cout << Rank[i] << endl;
+		}
+	}
 
 	system("PAUSE");
 	
