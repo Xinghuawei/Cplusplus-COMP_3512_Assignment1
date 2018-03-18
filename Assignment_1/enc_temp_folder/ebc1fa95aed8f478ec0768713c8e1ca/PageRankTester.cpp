@@ -125,6 +125,7 @@ int main() {
 		else {
 			chain = false;
 			whichone = true;
+			cout << "1" << endl;
 		}
 		
 
@@ -146,6 +147,7 @@ int main() {
 		else {
 			chain = false;
 			whichone = false;
+			cout << "2" << endl;
 		}
 	}
 

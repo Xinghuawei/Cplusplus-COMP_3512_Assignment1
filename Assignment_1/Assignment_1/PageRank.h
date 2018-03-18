@@ -56,7 +56,7 @@ public:
 
 	Matrix& operator*=(const Matrix & rhs);
 
-	Matrix& operator*=(int);
+	Matrix& operator*=(double);
 
 	Matrix operator+(const Matrix&);
 };

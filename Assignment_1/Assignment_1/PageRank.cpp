@@ -117,11 +117,11 @@ Matrix& Matrix:: operator*=(const Matrix & rhs)
 	return *this;
 }
 
-Matrix& Matrix::operator*=(int n) {
+Matrix& Matrix::operator*=(double n) {
 	Matrix tmp(*this);
 	for (int i = 1; i <= size; i++) {
 		for (int k = 1; k <= size; k++) {
-			tmp.set_value(i, k, tmp.get_value(i, k)*0.85);
+			tmp.set_value(i, k, tmp.get_value(i, k)*n);
 		}
 	}
 	*this = tmp;
