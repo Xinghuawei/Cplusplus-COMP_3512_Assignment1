@@ -128,6 +128,8 @@ Matrix& Matrix::operator*=(int n) {
 	return *this;
 }
 
+
+
 Matrix Matrix::operator+(const Matrix& m) {
 	if (m.size == size) {
 		Matrix temp(size);

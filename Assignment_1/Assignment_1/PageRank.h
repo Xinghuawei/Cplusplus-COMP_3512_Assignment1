@@ -5,7 +5,7 @@
 #include<stdexcept>
 #include<math.h>
 #include <iomanip>
-
+#include <vector>
 
 using namespace std;
 class Matrix {
@@ -60,6 +60,7 @@ public:
 
 	Matrix operator+(const Matrix&);
 };
+
 
 #endif
 

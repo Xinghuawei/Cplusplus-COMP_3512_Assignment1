@@ -95,12 +95,31 @@ int main() {
 	cout << matTransition << endl;
 
 	vector<double> Rank(count,1);
+	vector<double> RankCopy(count);
 
 	cout << "--------------------------" << endl;
 	cout << "Initial Matrix Rank: " << endl;
-	for (int i = 0; i < Rank.size(); i++) {
+	for (int i = 0; i < count; i++) {
 		cout<< Rank[i]<<endl;
 	}
+
+
+	for (int i = 1; i <= count; i++) {
+		double sum = 0.0;
+		for (int k = 1; k <= count; k++) {
+			sum += (Rank[k-1] * matTransition.get_value(i, k));
+		}
+		RankCopy[i-1] = sum;
+	}
+	
+	for (int i = 0; i < count; i++) {
+		cout << RankCopy[i] << endl;
+	}
+
+
+
+
+
 
 
 	system("PAUSE");
