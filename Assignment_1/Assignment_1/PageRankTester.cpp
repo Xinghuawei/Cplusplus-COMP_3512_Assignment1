@@ -4,6 +4,8 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <vector>
+
 using namespace std;
 int main() {
 	int count{ 0 };
@@ -69,8 +71,20 @@ int main() {
 			matQ.set_value(i, k, 1 / (double)count);
 		}
 	}
+	matQ *= 0.15;
 	cout << matQ << endl;
 
+	matS *= 0.85;
+	cout << matS << endl;
+
+	Matrix matTransition = matQ + matS;
+	cout << matTransition << endl;
+
+	vector<double> Rank;
+
+	for (int i = 0; i < count; i++) {
+		Rank.push_back[i] = 1;
+	}
 
 	system("PAUSE");
 	

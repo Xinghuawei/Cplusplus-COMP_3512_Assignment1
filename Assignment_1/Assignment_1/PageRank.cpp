@@ -10,6 +10,8 @@ Matrix::Matrix() {
 	matrix[0] = 0;
 }
 
+
+
 //constructor that accepts integer which n is the size of the martix
 Matrix::Matrix(int n) : size{ n } {
 	matrix = new double[size*size];
@@ -17,6 +19,8 @@ Matrix::Matrix(int n) : size{ n } {
 		matrix[i] = 0;
 	}
 }
+
+
 
 //constructor accepts an array of integers
 Matrix::Matrix(double arr[], int n) {
@@ -111,4 +115,25 @@ Matrix& Matrix:: operator*=(const Matrix & rhs)
 		*this = c;
 	}
 	return *this;
+}
+
+Matrix& Matrix::operator*=(int n) {
+	Matrix tmp(*this);
+	for (int i = 1; i <= size; i++) {
+		for (int k = 1; k <= size; k++) {
+			tmp.set_value(i, k, tmp.get_value(i, k)*0.85);
+		}
+	}
+	*this = tmp;
+	return *this;
+}
+
+Matrix Matrix::operator+(const Matrix& m) {
+	if (m.size == size) {
+		Matrix temp(size);
+		for (int i = 0; i < size*size; i++) {
+			temp.matrix[i] = m.matrix[i] + matrix[i];
+		}
+		return temp;
+	}
 }
