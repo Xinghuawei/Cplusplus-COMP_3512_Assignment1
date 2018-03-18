@@ -16,16 +16,16 @@ private:
 	//create dynamic memory matrix array 
 	double* matrix;
 
-	
+	//double* matrixRank;
 public:
 	//default constructor
 	Matrix();
 
-	
+	Matrix(int, int);
 	//constructor that accepts integer which is the size of the martix
 	Matrix(int);
 
-	Matrix(int, int);
+	//Matrix(int, int);
 	//constructor accepts an array of integers
 	Matrix(double[], int);
 

@@ -80,11 +80,12 @@ int main() {
 	Matrix matTransition = matQ + matS;
 	cout << matTransition << endl;
 
-	vector<double> Rank;
+	vector<double> Rank(count,1);
 
-	for (int i = 0; i < count; i++) {
-		Rank.push_back[i] = 1;
+	for (int i = 0; i < Rank.size(); i++) {
+		cout<< Rank[i]<<endl;
 	}
+
 
 	system("PAUSE");
 	
