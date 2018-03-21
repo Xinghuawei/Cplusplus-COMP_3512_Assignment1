@@ -202,8 +202,9 @@ int main() {
 	//False then use Rank
 	if (whichone) {
 		double sum = 0.0;
+		
 		for (int i = 0; i < count; i++) {
-			cout << RankCopy[i] << endl;
+			cout << fixed<<setprecision(3) << RankCopy[i] << endl;
 			sum += RankCopy[i];
 		}
 		for (int j = 0; j < count; j++) {
@@ -212,10 +213,12 @@ int main() {
 
 	} else {
 		double sum = 0.0;
+		
 		for (int i = 0; i < count; i++) {
-			cout << Rank[i] << endl;
+			cout << fixed << setprecision(3) << Rank[i] << endl;
 			sum += Rank[i];
 		}
+		
 		for (int j = 0; j < count; j++) {
 			final[j] = Rank[j] / sum;
 		}
