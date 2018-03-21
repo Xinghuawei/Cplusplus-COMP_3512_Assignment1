@@ -228,7 +228,7 @@ int main() {
 	//i+65 is letter A and so on.
 	for (int i = 0; i < count; i++) {
 		char c = i + 65;
-		cout << c << " = " << final[i] << endl;
+		cout << c << " = " << fixed << setprecision(3) << final[i] << endl;
 	}
 
 	//Output result to a txt file.
@@ -238,7 +238,7 @@ int main() {
 	//i+65 is letter A and so on.
 	for (int i = 0; i < count; i++) {
 		char c = i + 65;
-		outfile << c << " = " << final[i] << endl;
+		outfile << c << " = " << fixed << setprecision(3) << final[i] << endl;
 	}
 
 	//close file.
